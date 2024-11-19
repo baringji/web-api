@@ -240,6 +240,7 @@ class WebApplicationOAuth2RestRequestsAdapter(Component):
         with OAuth2Session(
             client=client,
             redirect_uri=oauth_params.get("redirect_url"),
+            scope=oauth_params.get("oauth2_scope"),
         ) as session:
             authorization_url, state = session.authorization_url(
                 backend.oauth2_authorization_url, **authorization_url_extra_params
