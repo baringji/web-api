@@ -177,6 +177,7 @@ class TestWebServiceOauth2WebApplication(CommonWebService):
                 "oauth2_token_url": f"{cls.url}oauth2/token",
                 "oauth2_audience": cls.url,
                 "oauth2_authorization_url": f"{cls.url}/authorize",
+                "oauth2_scope": "read write",
             }
         )
         return res
@@ -192,7 +193,7 @@ class TestWebServiceOauth2WebApplication(CommonWebService):
             "target": "self",
             "url": "https://localhost.demo.odoo//authorize?response_type=code&"
             "client_id=some_client_id&"
-            f"redirect_uri={quote(self.webservice.redirect_url, safe='')}&scope=&state=",
+            f"redirect_uri={quote(self.webservice.redirect_url, safe='')}",
         }
         self.assertEqual(action["type"], expected_action["type"])
         self.assertEqual(action["target"], expected_action["target"])
